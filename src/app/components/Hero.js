@@ -51,7 +51,7 @@ const Hero = () => {
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
             }`}
           >
-            I'm <span className="text-[#FD853A]">Vivek</span>,
+            I&apos;m <span className="text-[#FD853A]">Vivek</span>,
           </div>
 
           <div
@@ -116,3 +116,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
