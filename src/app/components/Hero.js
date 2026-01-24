@@ -16,8 +16,8 @@ const Hero = () => {
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/Vivek_Resume.pdf"; 
-    link.download = "Vivek_Resume.pdf";
+    link.href = "/Vivek_Resume_.pdf"; 
+    link.download = "Vivek_Resume_.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -116,4 +116,5 @@ const Hero = () => {
 };
 
 export default Hero;
+
 
