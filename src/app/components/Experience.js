@@ -21,7 +21,7 @@ const workExperiences = [
   {
     company: "Willow Wave",
     location: "Kanpur",
-    period: "July 2025 - Present",
+    period: "July 2025 - Sept 2025",
     title: "Frontend Developer Intern",
     description:
       "Built and deployed responsive websites and plugins using Next.js, Tailwind CSS, Redux.",
@@ -137,3 +137,4 @@ const Experience = () => {
 };
 
 export default Experience;
+
