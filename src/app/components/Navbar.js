@@ -19,7 +19,7 @@ const Logo = ({ onClick }) => (
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
   >
-    <div className="flex">Portfolio</div>
+    <div className="flex">Vivek</div>
   </motion.div>
 );
 

@@ -7,14 +7,22 @@ import {
   FaDatabase,
   FaTools,
   FaBug,
-  FaBookOpen
+  FaBookOpen,
+  FaCode
 } from 'react-icons/fa';
 
 // --- Skills Data ---
 const skillsData = [
   {
+    category: "Programming",
+    skills: ["Java", "JavaScript"],
+    icon: <FaCode size={24} />,
+    color: "text-orange-500",
+    bgColor: "bg-orange-50"
+  },
+  {
     category: "Frontend",
-    skills: ["React.js", "Next.js", "Tailwind CSS", "JavaScript", "HTML", "CSS"],
+    skills: ["React.js", "Next.js", "TypeScript", "JointJS", "HTML", "CSS", "Tailwind CSS"],
     icon: <FaLaptopCode size={24} />,
     color: "text-blue-500",
     bgColor: "bg-blue-50"
@@ -41,15 +49,15 @@ const skillsData = [
     bgColor: "bg-teal-50"
   },
   {
-    category: "Testing",
-    skills: ["Manual Testing", "SDLC/STLC", "Test Cases", "Bug Reporting", "SCRUM"],
+    category: "Testing & QA",
+    skills: ["Manual Testing", "SDLC/STLC", "Test Case Design", "Bug Tracking (JIRA)"],
     icon: <FaBug size={24} />,
     color: "text-pink-500",
     bgColor: "bg-pink-50"
   },
   {
-    category: "CS Fundamentals",
-    skills: ["Data Structures & Algorithms", "OOP", "DBMS", "Operating Systems", "Computer Networks"],
+    category: "Core CS",
+    skills: ["Data Structures & Algorithms", "OOPs", "DBMS"],
     icon: <FaBookOpen size={24} />,
     color: "text-yellow-500",
     bgColor: "bg-yellow-50"
@@ -101,11 +109,11 @@ const Skills = () => {
         </motion.div>
 
         {/* Skills Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {skillsData.map((categoryItem, index) => (
             <motion.div
               key={categoryItem.category}
-              className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm flex flex-col transition-all duration-300"
+              className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col h-full transition-all duration-300"
               custom={index}
               variants={cardVariants}
               initial="hidden"
@@ -114,23 +122,23 @@ const Skills = () => {
               whileHover="hover"
             >
               {/* Category Icon & Title */}
-              <div className="flex items-center mb-4">
+              <div className="flex items-center gap-3 mb-5">
                 <motion.div
-                  className={`p-2 rounded-lg ${categoryItem.bgColor} ${categoryItem.color}`}
+                  className={`flex h-11 w-11 items-center justify-center rounded-xl shrink-0 ${categoryItem.bgColor} ${categoryItem.color}`}
                   variants={iconVariants}
                   whileHover="hover"
                 >
                   {categoryItem.icon}
                 </motion.div>
-                <div className="text-2xl font-semibold text-gray-800 ml-4">{categoryItem.category}</div>
+                <div className="text-xl font-semibold text-gray-900">{categoryItem.category}</div>
               </div>
 
               {/* Skills Pills */}
-              <div className="flex flex-wrap gap-3 mt-auto pt-4">
+              <div className="flex flex-wrap gap-2.5">
                 {categoryItem.skills.map((skill) => (
                   <motion.div
                     key={skill}
-                    className="bg-gray-100 text-gray-700 text-sm font-medium px-4 py-2 rounded-full border border-gray-200 cursor-pointer"
+                    className="bg-gray-100 text-gray-700 text-sm font-medium px-3.5 py-1.5 rounded-full border border-gray-200 cursor-pointer"
                     variants={pillVariants}
                     whileHover="hover"
                     whileTap="tap"

@@ -22,83 +22,65 @@ const workExperiences = [
     company: "Willow Wave",
     location: "Kanpur",
     period: "July 2025 - Sept 2025",
-    title: "Frontend Developer Intern",
+    title: "Frontend Developer Intern (Remote)",
     description:
-      "Built and deployed responsive websites and plugins using Next.js, Tailwind CSS, Redux.",
+      "Built and deployed responsive websites and plugins using Next.js and Tailwind CSS. Developed features like work report summaries, PDF export, and CRM interface components.",
+    isCurrent: false,
+  },
+  {
+    company: "Quale Infotech Private Limited",
+    location: "Gurugram",
+    period: "March 2026 - Present",
+    title: "Software Developer Intern",
+    description:
+      "Building the frontend of an Agentic AI Workflow Platform using JointJS, React.js, and TypeScript, including the toolbar, inspector panel, node configuration, and workflow canvas.",
     isCurrent: true,
   },
 ];
 
 const TimelineItem = ({ experience, isLast }) => {
   return (
-    <div className="relative mb-12 w-full flex flex-col" itemScope itemType="https://schema.org/WorkExperience">
-      
-      {/* Mobile Card Layout */}
-      <div className="md:hidden flex flex-col bg-white shadow-md rounded-lg p-6">
-        <div className="flex items-center gap-3 mb-2">
-          <div
-            className={`flex h-4 w-4 rounded-full ${
-              experience.isCurrent ? "border-2 border-[#FD853A] bg-white" : "bg-[#FD853A]"
-            }`}
-          >
-            {experience.isCurrent && (
-              <div className="h-2 w-2 bg-[#FD853A] rounded-full m-auto"></div>
-            )}
-          </div>
-          <div className="text-lg font-bold text-gray-800" itemProp="jobTitle">
-            {experience.title}
-          </div>
+    <div
+      className="relative flex gap-6 sm:gap-8 pb-12 last:pb-0"
+      itemScope
+      itemType="https://schema.org/WorkExperience"
+    >
+      {/* Marker column */}
+      <div className="relative flex flex-col items-center">
+        <div
+          className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full z-10 ring-4 ring-white ${
+            experience.isCurrent ? "bg-[#FD853A]" : "bg-gray-300"
+          }`}
+        >
+          {experience.isCurrent && (
+            <span className="absolute inline-flex h-4 w-4 rounded-full bg-[#FD853A] opacity-75 animate-ping"></span>
+          )}
         </div>
-        <div className="text-sm text-gray-600" itemProp="name">
-          {experience.company}, {experience.location}
-        </div>
-        <div className="text-sm text-gray-500 italic mt-1" itemProp="startDate">
-          {experience.period}
-        </div>
-        <div className="mt-2 text-gray-700" itemProp="description">
-          {experience.description}
-        </div>
+        {!isLast && (
+          <div className="w-px flex-1 bg-gray-200 mt-1"></div>
+        )}
       </div>
 
-      {/* Desktop Horizontal Layout */}
-      <div className="hidden md:flex flex-row items-center justify-between w-full">
-        
-        {/* Left Content */}
-        <div className="w-1/3 flex flex-col items-end pr-6">
-          <div className="text-lg font-bold text-gray-800" itemProp="name">
-            {experience.company}, {experience.location}
-          </div>
-          <div className="text-sm text-gray-500 mt-1" itemProp="startDate">
-            {experience.period}
-          </div>
-        </div>
-
-        {/* Middle Marker */}
-        <div className="relative flex flex-col items-center justify-center">
-          {!isLast && (
-            <div className="absolute top-10 left-1/2 -translate-x-1/2 h-[70px] w-px border-l-2 border-dashed border-gray-300"></div>
-          )}
-          <div
-            className={`flex h-10 w-10 items-center justify-center rounded-full z-10 ${
-              experience.isCurrent
-                ? "border-4 border-[#FD853A] bg-white"
-                : "bg-[#FD853A]"
-            }`}
-          >
-            {experience.isCurrent && (
-              <div className="h-4 w-4 rounded-full bg-[#FD853A]"></div>
-            )}
-          </div>
-        </div>
-
-        {/* Right Content */}
-        <div className="w-1/3 flex flex-col items-start pl-6">
-          <div className="text-xl font-bold text-gray-800" itemProp="jobTitle">
+      {/* Content card */}
+      <div className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 p-6 sm:p-7 mt-[-2px]">
+        <div className="flex flex-wrap items-center gap-3 mb-1">
+          <div className="text-lg sm:text-xl font-bold text-gray-900" itemProp="jobTitle">
             {experience.title}
           </div>
-          <div className="mt-1 text-gray-600" itemProp="description">
-            {experience.description}
-          </div>
+          {experience.isCurrent && (
+            <span className="text-xs font-semibold text-[#FD853A] bg-orange-50 border border-orange-200 rounded-full px-2.5 py-0.5">
+              Current
+            </span>
+          )}
+        </div>
+        <div className="text-sm sm:text-base text-gray-600 font-medium" itemProp="name">
+          {experience.company} &middot; {experience.location}
+        </div>
+        <div className="text-sm text-gray-400 mt-0.5 mb-3" itemProp="startDate">
+          {experience.period}
+        </div>
+        <div className="text-gray-600 leading-relaxed" itemProp="description">
+          {experience.description}
         </div>
       </div>
     </div>
@@ -109,11 +91,11 @@ const Experience = () => {
   return (
     <div
       id="experience"
-      className="flex flex-col bg-white py-12 px-4 sm:px-6 lg:px-8 font-sans"
+      className="flex flex-col bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 font-sans"
       itemScope
       itemType="https://schema.org/Resume"
     >
-      <div className="max-w-6xl mx-auto flex flex-col">
+      <div className="max-w-3xl mx-auto flex flex-col w-full">
         <div className="flex justify-center mb-16">
           <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-bold text-black">
             My <span className="text-[#FD853A]">Work Experience</span>

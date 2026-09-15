@@ -7,10 +7,18 @@ import Image from "next/image";
 // ✅ Import images
 import codefusionImg from "@/app/assets/codefusion.png";
 import emsImg from "@/app/assets/ems.png";
-import weatherImg from "@/app/assets/weather.png";
+import agenticImg from "@/app/assets/agentic-workflow.png";
 
 // --- Projects Data ---
 const projectsData = [
+  {
+    title: "Agentic AI Workflow Platform",
+    description:
+      "Built the workflow designer for an Agentic AI platform, including the visual canvas, node stencil, toolbar, inspector panel, and variable management system. Currently building a TFS-style version control system with workflow versioning, history tracking, and rollback functionality.",
+    techStack: ["JointJS Plus", "React.js", "Next.js", "TypeScript", "Zustand"],
+    githubLink: "https://github.com/vivekmadiyan",
+    imageSrc: agenticImg,
+  },
   {
     title: "CodeFusion – Real-Time Code Collaboration App",
     description:
@@ -26,14 +34,6 @@ const projectsData = [
     techStack: ["React.js", "Context API", "Tailwind CSS", "Local Storage"],
     githubLink: "https://github.com/vivekmadiyan/Employment_Management_System",
     imageSrc: emsImg,
-  },
-  {
-    title: "Weather App – Full-Stack Application",
-    description:
-      "Created a real-time weather app with city-based search & forecasts, deployed on Render with environment-based configuration.",
-    techStack: ["React.js", "Node.js", "Express.js", "OpenWeatherMap API"],
-    githubLink: "https://github.com/vivekmadiyan/weather-app",
-    imageSrc: weatherImg,
   },
 ];
 
@@ -77,14 +77,14 @@ const Projects = () => {
               >
                 {/* Project Image */}
                 <div
-                  className={`w-full lg:w-1/2 h-80 rounded-lg overflow-hidden border border-gray-200 flex items-center justify-center ${
+                  className={`w-full lg:w-1/2 h-80 rounded-lg overflow-hidden border border-gray-200 bg-gray-50 flex items-center justify-center ${
                     isOdd ? "lg:order-last" : ""
                   }`}
                 >
                   <Image
                     src={project.imageSrc}
                     alt={project.title}
-                    className="object-cover w-full h-full"
+                    className="object-contain w-full h-full"
                     width={600}
                     height={400}
                   />
