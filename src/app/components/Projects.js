@@ -14,7 +14,7 @@ const projectsData = [
   {
     title: "Agentic AI Workflow Platform",
     description:
-      "Built the workflow designer for an Agentic AI platform, including the visual canvas, node stencil, toolbar, inspector panel, and variable management system. Currently building a TFS-style version control system with workflow versioning, history tracking, and rollback functionality.",
+      "Built the drag-and-drop workflow designer for an enterprise AI agent platform, including the visual canvas, node stencil, toolbar, inspector panel, and variable management. Delivered configuration panels and variable handling for no-code, multi-step agent workflows.",
     techStack: ["JointJS Plus", "React.js", "Next.js", "TypeScript", "Zustand"],
     githubLink: "https://github.com/vivekmadiyan",
     imageSrc: agenticImg,
@@ -22,16 +22,16 @@ const projectsData = [
   {
     title: "CodeFusion – Real-Time Code Collaboration App",
     description:
-      "Built a real-time collaborative code editor with WebSockets & autosave. Features include multi-user sessions, syntax highlighting, and a scalable backend.",
+      "Built a real-time collaborative code editor on CodeMirror; users join shared rooms and see edits live over WebSockets. Added room join, leave, and rejoin, live presence updates, multi-language highlighting, and selectable color themes.",
     techStack: ["React.js", "Node.js", "Express.js", "Socket.io"],
     githubLink: "https://github.com/vivekmadiyan/CodeFusion",
     imageSrc: codefusionImg,
   },
   {
-    title: "Employee Management System – Web App",
+    title: "EmployeeMS – Multi-Tenant HR & Workforce Management Platform",
     description:
-      "Developed a compact employee & task management system with role-based access, task creation/forwarding, and real-time status tracking. Integrated responsive UI with persistent state using Context API & Local Storage.",
-    techStack: ["React.js", "Context API", "Tailwind CSS", "Local Storage"],
+      "Built a multi-tenant HR platform with role-based workflows for admins, managers, and employees, company-scoped data, teams, and reporting lines. Implemented leave management, reusable onboarding templates, auditable offboarding checklists, and CSV workforce reports.",
+    techStack: ["React.js", "Context API", "Tailwind CSS", "Node.js", "Express.js", "PostgreSQL", "JWT", "Playwright"],
     githubLink: "https://github.com/vivekmadiyan/Employment_Management_System",
     imageSrc: emsImg,
   },

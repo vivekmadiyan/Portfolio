@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaGithub, FaGlobe, FaLinkedin } from "react-icons/fa";
 import { FiArrowUp, FiMail, FiPhone } from "react-icons/fi";
 
 // --- Social Links Data ---
 const socialLinks = [
   { href: "https://github.com/vivekmadiyan", icon: <FaGithub size={24} /> },
   { href: "https://www.linkedin.com/in/vivekmadiyan/", icon: <FaLinkedin size={24} /> },
-  { href: "https://www.instagram.com/vivek_.1.1/#", icon: <FaInstagram size={24} /> },
+  { href: "https://portfolio-ycwq.vercel.app", icon: <FaGlobe size={24} /> },
 ];
 
 const Footer = () => {

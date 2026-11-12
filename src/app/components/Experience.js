@@ -2,39 +2,22 @@ import React from "react";
 
 const workExperiences = [
   {
-    company: "Global Infoventures Pvt. Ltd.",
-    location: "Noida",
-    period: "Nov 2024 - June 2025",
-    title: "AI/ML Trainee",
-    description:
-      "Gained hands-on experience with Python, machine learning libraries, and real-world project workflows.",
-    isCurrent: false,
-  },
-  {
-    company: "CRC Training Dept., ABESIT",
-    location: "Ghaziabad",
-    period: "June 2025 - July 2025",
-    title: "Manual Testing Intern",
-    description: "Designed and executed test cases in JIRA, performed bug reporting.",
-    isCurrent: false,
-  },
-  {
     company: "Willow Wave",
-    location: "Kanpur",
-    period: "July 2025 - Sept 2025",
+    location: "Kanpur, India",
+    period: "July 2025 - September 2025",
     title: "Frontend Developer Intern (Remote)",
     description:
-      "Built and deployed responsive websites and plugins using Next.js and Tailwind CSS. Developed features like work report summaries, PDF export, and CRM interface components.",
+      "Built and deployed responsive websites and plugins with Next.js and Tailwind CSS. Developed features such as work report summaries, PDF export, and CRM interface components.",
     isCurrent: false,
   },
   {
     company: "Quale Infotech Private Limited",
-    location: "Gurugram",
-    period: "March 2026 - Present",
+    location: "Gurugram, India",
+    period: "March 2026 - October 2026",
     title: "Software Developer Intern",
     description:
-      "Building the frontend of an Agentic AI Workflow Platform using JointJS, React.js, and TypeScript, including the toolbar, inspector panel, node configuration, and workflow canvas.",
-    isCurrent: true,
+      "Built the frontend of an Agentic AI Workflow Platform in JointJS, React.js, and TypeScript, focusing on the designer and UI. Developed the toolbar, inspector panel, node configuration, and workflow canvas. Improved workflow execution through variable handling, memory management, and node-to-node data sharing. Also built an in-house Git server and migrated 50+ Excel activities from ClosedXML to OpenXML.",
+    isCurrent: false,
   },
 ];
 
@@ -119,4 +102,3 @@ const Experience = () => {
 };
 
 export default Experience;
-
