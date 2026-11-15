@@ -32,7 +32,7 @@ const projectsData = [
     description:
       "Built a multi-tenant HR platform with role-based workflows for admins, managers, and employees, company-scoped data, teams, and reporting lines. Implemented leave management, reusable onboarding templates, auditable offboarding checklists, and CSV workforce reports.",
     techStack: ["React.js", "Context API", "Tailwind CSS", "Node.js", "Express.js", "PostgreSQL", "JWT", "Playwright"],
-    githubLink: "https://github.com/vivekmadiyan/Employment_Management_System",
+    githubLink: "https://github.com/vivekmadiyan/employee-ms",
     imageSrc: emsImg,
   },
 ];
