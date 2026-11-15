@@ -38,20 +38,23 @@ const Contact = () => {
   };
 
   return (
-    <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10">
+    <div className="my-12 grid gap-8 overflow-hidden rounded-[2rem] bg-[#1d1d1b] p-5 sm:p-8 lg:my-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:p-12">
       
       {/* Form Section */}
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-        className="flex flex-col flex-[0.75] bg-gray-900 p-8 rounded-2xl"
+        className="flex flex-col"
       >
         <div className="flex flex-col mb-6">
-          <p className="text-gray-400 text-sm uppercase tracking-wider">
-            Get in touch
+          <p className="text-[#e7a481] text-xs font-semibold uppercase tracking-[0.2em]">
+            Have a good one in mind?
           </p>
-          <h3 className="text-white font-black text-4xl sm:text-5xl md:text-6xl">
-            Contact.
+          <h3 className="mt-3 text-white font-semibold text-4xl tracking-[-0.06em] sm:text-5xl">
+            Let&apos;s talk.
           </h3>
+          <p className="mt-4 max-w-md text-sm leading-6 text-white/55">
+            Tell me what you&apos;re building. I&apos;d love to hear about it.
+          </p>
         </div>
 
         <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
@@ -64,7 +67,7 @@ const Contact = () => {
               type="text"
               name="title"
               placeholder="Subject"
-              className="flex bg-gray-800 py-3 px-5 placeholder:text-gray-400 text-white rounded-lg outline-none border-none font-medium"
+              className="flex rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm font-medium text-white outline-none transition placeholder:text-white/35 focus:border-[#e76f3c]"
               required
             />
           </div>
@@ -78,7 +81,7 @@ const Contact = () => {
               type="text"
               name="name"
               placeholder="What's your good name?"
-              className="flex bg-gray-800 py-3 px-5 placeholder:text-gray-400 text-white rounded-lg outline-none border-none font-medium"
+              className="flex rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm font-medium text-white outline-none transition placeholder:text-white/35 focus:border-[#e76f3c]"
               required
             />
           </div>
@@ -92,7 +95,7 @@ const Contact = () => {
               type="email"
               name="email"
               placeholder="Your email address"
-              className="flex bg-gray-800 py-3 px-5 placeholder:text-gray-400 text-white rounded-lg outline-none border-none font-medium"
+              className="flex rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm font-medium text-white outline-none transition placeholder:text-white/35 focus:border-[#e76f3c]"
               required
             />
           </div>
@@ -106,7 +109,7 @@ const Contact = () => {
               rows={5}
               name="message"
               placeholder="What do you want to say?"
-              className="flex bg-gray-800 py-3 px-5 placeholder:text-gray-400 text-white rounded-lg outline-none border-none font-medium resize-none"
+              className="flex resize-none rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm font-medium text-white outline-none transition placeholder:text-white/35 focus:border-[#e76f3c]"
               required
             />
           </div>
@@ -115,7 +118,8 @@ const Contact = () => {
           <div className="flex">
             <button
               type="submit"
-              className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 py-3 px-8 rounded-xl text-white font-bold shadow-md"
+              className="flex items-center gap-2 rounded-full bg-[#e76f3c] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#d85f30] disabled:cursor-wait disabled:opacity-70"
+              disabled={loading}
             >
               {loading ? "Sending..." : "Send"}
               <FaPaperPlane />
@@ -127,7 +131,7 @@ const Contact = () => {
       {/* Earth Section */}
       <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
-        className="flex xl:flex-1 xl:h-auto md:h-[500px] h-[350px]"
+        className="hidden min-h-[420px] lg:flex lg:h-auto lg:flex-1"
       >
         <EarthCanvas />
       </motion.div>

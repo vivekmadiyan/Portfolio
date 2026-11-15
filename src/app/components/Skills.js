@@ -1,158 +1,102 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
+
+import React from "react";
+import { motion } from "framer-motion";
 import {
+  FaCode,
   FaLaptopCode,
   FaServer,
   FaDatabase,
   FaTools,
-  FaBug,
-  FaBookOpen,
-  FaCode
-} from 'react-icons/fa';
+} from "react-icons/fa";
 
-// --- Skills Data ---
-const skillsData = [
+const skillGroups = [
   {
-    category: "Programming",
-    skills: ["Java", "JavaScript"],
-    icon: <FaCode size={24} />,
-    color: "text-orange-500",
-    bgColor: "bg-orange-50"
+    category: "Languages",
+    skills: ["JavaScript", "TypeScript", "Java", "SQL"],
+    icon: <FaCode />,
   },
   {
     category: "Frontend",
-    skills: ["React.js", "Next.js", "TypeScript", "JointJS", "HTML", "CSS", "Tailwind CSS"],
-    icon: <FaLaptopCode size={24} />,
-    color: "text-blue-500",
-    bgColor: "bg-blue-50"
+    skills: ["React.js", "Next.js", "JointJS", "Tailwind CSS", "HTML", "CSS"],
+    icon: <FaLaptopCode />,
   },
   {
     category: "Backend",
     skills: ["Node.js", "Express.js", "REST APIs"],
-    icon: <FaServer size={24} />,
-    color: "text-green-500",
-    bgColor: "bg-green-50"
+    icon: <FaServer />,
   },
   {
-    category: "Databases",
-    skills: ["MongoDB", "SQL"],
-    icon: <FaDatabase size={24} />,
-    color: "text-purple-500",
-    bgColor: "bg-purple-50"
+    category: "Data",
+    skills: ["PostgreSQL", "MongoDB", "OpenXML"],
+    icon: <FaDatabase />,
   },
   {
-    category: "Tools & Platforms",
-    skills: ["Git", "GitHub", "Vercel", "Render", "Figma", "JIRA"],
-    icon: <FaTools size={24} />,
-    color: "text-teal-500",
-    bgColor: "bg-teal-50"
+    category: "Tools & testing",
+    skills: ["Git", "GitHub", "Render", "Vercel", "Figma", "JIRA"],
+    icon: <FaTools />,
   },
   {
     category: "Testing & QA",
-    skills: ["Manual Testing", "SDLC/STLC", "Test Case Design", "Bug Tracking (JIRA)"],
-    icon: <FaBug size={24} />,
-    color: "text-pink-500",
-    bgColor: "bg-pink-50"
+    skills: ["Playwright", "Manual testing", "SDLC / STLC", "Test case design", "Bug tracking"],
+    icon: <FaTools />,
   },
   {
-    category: "Core CS",
-    skills: ["Data Structures & Algorithms", "OOPs", "DBMS"],
-    icon: <FaBookOpen size={24} />,
-    color: "text-yellow-500",
-    bgColor: "bg-yellow-50"
+    category: "Core computer science",
+    skills: ["Data structures & algorithms", "OOP", "DBMS"],
+    icon: <FaCode />,
   },
 ];
 
-// --- Animation Variants ---
-const sectionTitleVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.2, type: 'spring', stiffness: 100, damping: 15 },
-  }),
-  hover: { scale: 1.03, boxShadow: "0 12px 24px rgba(0,0,0,0.1)", transition: { type: 'spring', stiffness: 300 } },
-};
-
-const iconVariants = {
-  hover: { scale: [1, 1.1, 1], transition: { duration: 0.6, repeat: Infinity } },
-};
-
-const pillVariants = {
-  hover: { scale: 1.08, backgroundColor: "#FD853A", color: "#ffffff", borderColor: "#FD853A", transition: { duration: 0.2 } },
-  tap: { scale: 0.95, transition: { type: 'spring', stiffness: 300 } },
-};
-
-// --- Skills Component ---
-const Skills = () => {
-  return (
-    <div id="skills" className="min-h-screen bg-white font-sans flex items-center justify-center py-16 md:py-24">
-      <div className="container mx-auto max-w-6xl px-4 flex flex-col">
-        
-        {/* Section Title */}
-        <motion.div
-          className="text-center text-4xl font-bold text-black md:text-5xl mb-16"
-          variants={sectionTitleVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <div className="flex justify-center">
-            <div>Technical <span className="text-[#FD853A]">Skills</span></div>
-          </div>
-        </motion.div>
-
-        {/* Skills Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-          {skillsData.map((categoryItem, index) => (
-            <motion.div
-              key={categoryItem.category}
-              className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col h-full transition-all duration-300"
-              custom={index}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ amount: 0.2, once: true }}
-              whileHover="hover"
-            >
-              {/* Category Icon & Title */}
-              <div className="flex items-center gap-3 mb-5">
-                <motion.div
-                  className={`flex h-11 w-11 items-center justify-center rounded-xl shrink-0 ${categoryItem.bgColor} ${categoryItem.color}`}
-                  variants={iconVariants}
-                  whileHover="hover"
-                >
-                  {categoryItem.icon}
-                </motion.div>
-                <div className="text-xl font-semibold text-gray-900">{categoryItem.category}</div>
-              </div>
-
-              {/* Skills Pills */}
-              <div className="flex flex-wrap gap-2.5">
-                {categoryItem.skills.map((skill) => (
-                  <motion.div
-                    key={skill}
-                    className="bg-gray-100 text-gray-700 text-sm font-medium px-3.5 py-1.5 rounded-full border border-gray-200 cursor-pointer"
-                    variants={pillVariants}
-                    whileHover="hover"
-                    whileTap="tap"
-                  >
-                    {skill}
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+const Skills = () => (
+  <section id="skills" className="bg-[#f7f5f0] px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
+    <div className="mx-auto max-w-7xl">
+      <div className="mb-12 flex flex-col justify-between gap-5 md:mb-16 md:flex-row md:items-end">
+        <div>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#e76f3c]">
+            Tools of the trade
+          </p>
+          <h2 className="text-4xl font-semibold tracking-[-0.06em] text-[#1d1d1b] sm:text-5xl">
+            My toolkit<span className="text-[#e76f3c]">.</span>
+          </h2>
         </div>
+        <p className="max-w-md text-sm leading-6 text-[#77726b] sm:text-base">
+          A practical stack for building polished interfaces, scalable
+          applications, and reliable product experiences.
+        </p>
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {skillGroups.map((group, index) => (
+          <motion.article
+            key={group.category}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ delay: index * 0.07 }}
+            className="rounded-[1.5rem] border border-[#e9e4dc] bg-white p-6 sm:p-7"
+          >
+            <div className="mb-6 flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f7e6dc] text-[#e76f3c]">
+                {group.icon}
+              </span>
+              <h3 className="font-semibold text-[#292825]">{group.category}</h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {group.skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full border border-[#eeeae4] bg-[#fbfaf8] px-3 py-1.5 text-xs font-medium text-[#625e57]"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.article>
+        ))}
       </div>
     </div>
-  );
-};
+  </section>
+);
 
 export default Skills;

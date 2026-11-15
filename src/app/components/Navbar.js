@@ -1,10 +1,10 @@
 "use client";
+
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
 
 const navLinks = [
-  { title: "Home", href: "#home" },
   { title: "About", href: "#about" },
   { title: "Skills", href: "#skills" },
   { title: "Experience", href: "#experience" },
@@ -12,123 +12,87 @@ const navLinks = [
   { title: "Contact", href: "#contact" },
 ];
 
-const Logo = ({ onClick }) => (
-  <motion.div
-    onClick={() => onClick("#home", "Home")}
-    className="flex items-center gap-2 text-white px-4 py-2 cursor-pointer font-bold tracking-wide"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <div className="flex">Vivek</div>
-  </motion.div>
-);
-
-const NavLink = ({ link, active, onClick }) => (
-  <motion.div
-    onClick={() => onClick(link.href, link.title)}
-    className="relative flex text-white px-4 py-2 cursor-pointer"
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    {active === link.title && (
-      <motion.div
-        layoutId="active-pill"
-        className="absolute inset-0 bg-[#FD853A] rounded-full -z-10"
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      />
-    )}
-    <div className="flex">{link.title}</div>
-  </motion.div>
-);
-
 const Navbar = () => {
-  const [active, setActive] = useState("Home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleNavClick = (href, title) => {
-    setActive(title);
-    setIsMenuOpen(false);
-    const section = document.querySelector(href);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
   return (
-    <motion.div
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="bg-white py-8 sticky top-0 z-50"
-    >
-      <div className="max-w-6xl mx-auto flex flex-col">
-        <div className="flex items-center bg-black rounded-full h-[60px] px-[6px]">
-          {/* Desktop Nav */}
-          <div className="hidden md:flex w-full items-center justify-between">
-            <div className="flex items-center gap-2">
-              {navLinks.slice(0, 3).map((link) => (
-                <NavLink
-                  key={link.title}
-                  link={link}
-                  active={active}
-                  onClick={handleNavClick}
-                />
-              ))}
-            </div>
+    <header className="sticky top-0 z-50 border-b border-black/5 bg-[#f7f5f0]/90 backdrop-blur-xl">
+      <nav
+        aria-label="Main navigation"
+        className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12"
+      >
+        <a
+          href="#home"
+          onClick={() => setIsMenuOpen(false)}
+          className="text-xl font-black tracking-[-0.06em] text-[#171717]"
+        >
+          vivek<span className="text-[#e76f3c]">.</span>
+        </a>
 
-            <Logo onClick={handleNavClick} />
-
-            <div className="flex items-center gap-2">
-              {navLinks.slice(3).map((link) => (
-                <NavLink
-                  key={link.title}
-                  link={link}
-                  active={active}
-                  onClick={handleNavClick}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile Header */}
-          <div className="md:hidden flex w-full justify-between items-center px-4">
-            <Logo onClick={handleNavClick} />
-            <div
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="flex text-white cursor-pointer"
-              aria-label="Toggle navigation menu"
-              aria-expanded={isMenuOpen}
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.title}
+              href={link.href}
+              className="text-sm font-medium text-[#64615c] transition-colors hover:text-[#e76f3c]"
             >
-              {isMenuOpen ? <HiX size={28} /> : <HiMenu size={28} />}
-            </div>
-          </div>
+              {link.title}
+            </a>
+          ))}
+          <a
+            href="/Vivek_Resume.pdf"
+            download="Vivek_Resume.pdf"
+            className="rounded-full bg-[#1d1d1b] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#e76f3c]"
+          >
+            Download CV
+          </a>
         </div>
 
-        {/* Mobile Dropdown */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden flex flex-col bg-black/80 backdrop-blur-md mt-2 rounded-lg py-4"
-            >
-              <div className="flex flex-col items-center space-y-3">
-                {navLinks.map((link) => (
-                  <NavLink
-                    key={link.title}
-                    link={link}
-                    active={active}
-                    onClick={handleNavClick}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </motion.div>
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 text-[#171717] transition hover:border-black/30 md:hidden"
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+        >
+          {isMenuOpen ? <HiX size={23} /> : <HiMenu size={23} />}
+        </button>
+      </nav>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            id="mobile-navigation"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden border-t border-black/5 bg-[#f7f5f0] md:hidden"
+          >
+            <div className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 sm:px-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.title}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="rounded-xl px-4 py-3 text-sm font-medium text-[#45433f] transition-colors hover:bg-white hover:text-[#e76f3c]"
+                >
+                  {link.title}
+                </a>
+              ))}
+              <a
+                href="/Vivek_Resume.pdf"
+                download="Vivek_Resume.pdf"
+                onClick={() => setIsMenuOpen(false)}
+                className="mt-2 rounded-xl bg-[#1d1d1b] px-4 py-3 text-center text-sm font-semibold text-white"
+              >
+                Download CV
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 

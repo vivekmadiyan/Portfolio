@@ -1,121 +1,99 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { FiArrowUpRight } from "react-icons/fi";
-import { FaDownload } from "react-icons/fa";
+import React from "react";
+import { motion } from "framer-motion";
+import { FiArrowDown, FiArrowUpRight } from "react-icons/fi";
 import v3 from "../assets/v3.png";
 
 const Hero = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/Vivek_Resume.pdf";
-    link.download = "Vivek_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  const scrollToSection = (id) => {
-    const section = document.querySelector(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4 pt-16 sm:pt-20 md:pt-24 pb-8 font-sans overflow-hidden">
-      
-      {/* Top Section */}
-      <div className="relative flex flex-col items-center text-center mb-10 w-full">
-        <div className="absolute -top-10 sm:-top-12 md:-top-14 left-1/2 -translate-x-1/2 flex">
-          <div
-            className={`flex rounded-full bg-white px-4 py-2 text-sm font-semibold text-black border shadow-sm transition-all duration-500 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
-            }`}
-          >
-            Hello!
-          </div>
-        </div>
+    <section className="relative overflow-hidden bg-[#f7f5f0]">
+      <div className="pointer-events-none absolute -right-36 top-12 h-[28rem] w-[28rem] rounded-full border border-[#e9e3d9] sm:right-[-8rem] sm:top-8" />
+      <div className="pointer-events-none absolute -right-16 top-32 h-[20rem] w-[20rem] rounded-full border border-[#e9e3d9] sm:right-[-2rem]" />
 
-        <div className="flex flex-col">
-          <div
-            className={`text-3xl sm:text-5xl md:text-6xl font-medium text-black transition-all duration-500 delay-200 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-            }`}
-          >
-            I&apos;m <span className="text-[#FD853A]">Vivek</span>,
-          </div>
-
-          <div
-            className={`mt-2 text-3xl sm:text-5xl md:text-7xl font-medium text-black transition-all duration-500 delay-300 ${
-              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-            }`}
-          >
-            Software Developer Intern
-          </div>
-        </div>
-
-        <div
-          className={`flex justify-center transition-all duration-500 delay-[400ms] ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-          }`}
+      <div className="mx-auto grid min-h-[calc(100svh_-_76px)] max-w-7xl items-center gap-8 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-4 lg:px-12 lg:py-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="relative z-10"
         >
-          <div
-            onClick={handleDownload}
-            className="flex items-center border rounded-full px-6 py-2 mt-4 text-gray-800 hover:bg-gray-100 transition cursor-pointer"
+          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#e6ded2] bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#625e57]">
+            <span className="h-2 w-2 rounded-full bg-[#e76f3c]" />
+            Software developer · India
+          </div>
+
+          <p className="mb-3 text-lg font-medium text-[#625e57] sm:text-xl">
+            Hello, I&apos;m
+          </p>
+          <h1 className="max-w-3xl text-[clamp(3.75rem,10vw,8rem)] font-semibold leading-[0.88] tracking-[-0.085em] text-[#1d1d1b]">
+            Vivek
+            <br />
+            <span className="text-[#e76f3c]">Madiyan.</span>
+          </h1>
+          <p className="mt-8 max-w-xl text-base leading-7 text-[#625e57] sm:text-lg sm:leading-8">
+            I build intuitive interfaces and dependable software—from workflow
+            tools to collaborative web applications.
+          </p>
+
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <a
+              href="#projects"
+              className="group inline-flex items-center gap-3 rounded-full bg-[#1d1d1b] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#e76f3c]"
+            >
+              Explore my work
+              <FiArrowUpRight className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full border border-[#d9d2c8] px-6 py-3.5 text-sm font-semibold text-[#393733] transition-colors hover:border-[#1d1d1b]"
+            >
+              Let&apos;s talk
+            </a>
+          </div>
+
+          <a
+            href="#about"
+            className="mt-16 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#8b857c] transition-colors hover:text-[#e76f3c]"
           >
-            My Resume
-            <FaDownload size={15} className="ml-2" />
+            Scroll to discover <FiArrowDown />
+          </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+          className="relative mx-auto flex aspect-square w-full max-w-[29rem] items-center justify-center lg:ml-auto"
+          aria-hidden="true"
+        >
+          <div className="absolute inset-[8%] rounded-full bg-[#f1e8dc]" />
+          <div className="absolute inset-[14%] rounded-full border border-white/80" />
+          <div className="absolute inset-[23%] rounded-full border border-[#e76f3c]/20" />
+          <div className="absolute right-[8%] top-[17%] h-4 w-4 rounded-full bg-[#1d1d1b]" />
+          <div className="absolute bottom-[18%] left-[12%] h-3 w-3 rounded-full bg-[#e76f3c]" />
+          <div className="absolute inset-x-[11%] bottom-[10%] h-[68%] overflow-hidden rounded-t-[48%] bg-[#e76f3c]">
+            <img
+              src={v3.src}
+              alt=""
+              className="absolute inset-x-0 bottom-0 h-full w-full object-cover object-top mix-blend-screen opacity-40"
+            />
           </div>
-        </div>
-      </div>
-
-      {/* Image and CTA */}
-      <div
-        className={`w-full max-w-3xl transition-all duration-700 delay-[500ms] ${
-          isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}
-      >
-        <div className="relative flex justify-center">
-          <img
-            src={v3.src}
-            alt="Avatar of Vivek"
-            className="w-full max-w-[800px] h-auto mx-auto"
-          />
-          <div className="absolute bottom-[30px] left-1/2 -translate-x-1/2 z-10 flex items-center bg-transparent rounded-full border border-white p-1 pr-0 group cursor-pointer transition-transform duration-300 hover:scale-105">
-            
-            <div
-              onClick={() => scrollToSection("#projects")}
-              className="flex items-center gap-2 bg-[#FD853A] text-white py-3 px-6 rounded-full text-lg font-semibold mr-1 transition-colors duration-300 group-hover:bg-[#e9712a]"
-            >
-              Portfolio
-              <FiArrowUpRight className="text-xl transition-transform duration-300 group-hover:rotate-45" />
-            </div>
-
-            <div
-              onClick={() => scrollToSection("#contact")}
-              className="flex text-white text-lg font-semibold px-4 pr-6 whitespace-nowrap cursor-pointer"
-            >
-              Hire me
-            </div>
-
+          <div className="absolute bottom-[16%] right-[4%] rounded-2xl border border-[#e8e1d8] bg-white/90 p-4 shadow-[0_16px_50px_rgba(29,29,27,0.10)] backdrop-blur">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#8b857c]">
+              Focus
+            </p>
+            <p className="mt-1 text-sm font-semibold text-[#1d1d1b]">
+              Full-stack web
+            </p>
           </div>
-        </div>
+          <span className="absolute left-[5%] top-[21%] text-xs font-semibold uppercase tracking-[0.2em] text-[#8b857c] [writing-mode:vertical-rl]">
+            Code · Create · Iterate
+          </span>
+        </motion.div>
       </div>
-
-    </div>
+    </section>
   );
 };
 
 export default Hero;
-
-
 
